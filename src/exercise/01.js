@@ -6,6 +6,10 @@ import * as React from 'react'
 const INCREMENT = 'INCREMENT'
 
 function Counter({initialCount = 0, step = 1}) {
+  const init = initialCount => ({
+    count: initialCount,
+  })
+
   const countReducer = (state, action) => {
     switch (action.type) {
       case INCREMENT:
@@ -19,9 +23,7 @@ function Counter({initialCount = 0, step = 1}) {
     }
   }
 
-  const [state, dispatch] = React.useReducer(countReducer, {
-    count: initialCount,
-  })
+  const [state, dispatch] = React.useReducer(countReducer, initialCount, init)
   const {count} = state
 
   const increment = () => dispatch({type: INCREMENT, step})
