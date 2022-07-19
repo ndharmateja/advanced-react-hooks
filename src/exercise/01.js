@@ -19,7 +19,7 @@ function Counter({initialCount = 0, step = 1}) {
         }
         return out
       default:
-        return state
+        throw new Error(`Action type not supported: ${action.type}`)
     }
   }
 
